@@ -20,12 +20,12 @@ end
 package :default_rubies do
   requires :ruby_dependencies, :install_ruby_build
   
-  runner "ruby-build 1.9.2-p290 /opt/ruby-1.9.2-p290"
+  runner "ruby-build 1.9.3-p194 /opt/ruby-1.9.3-p194"
   runner "ruby-build 1.8.7-p352 /opt/ruby-1.8.7-p352"
   runner "chown -R #{DEPLOY_USER} /opt/ruby*"
   
   verify do
-    @commands << "/opt/ruby-1.9.2-p290/bin/ruby -v"
+    @commands << "/opt/ruby-1.9.3-p194/bin/ruby -v"
     @commands << "/opt/ruby-1.8.7-p352/bin/ruby -v"
   end
 end
@@ -33,13 +33,13 @@ end
 package :default_ruby do
   requires :default_rubies
   
-  runner "ln -s /usr/local/rubies/ruby-1.9.2-p290/bin/* /usr/local/bin/"
+  runner "ln -s /usr/local/rubies/ruby-1.9.3-p194/bin/* /usr/local/bin/"
   runner "source /etc/profile"
 
   verify do
     @commands << "ruby -v"
     @commands << "gem -v"
-    has_symlink '/usr/local/bin/ruby', '/usr/local/rubies/ruby-1.9.2-p290/bin/ruby' 
+    has_symlink '/usr/local/bin/ruby', '/usr/local/rubies/ruby-1.9.3-p194/bin/ruby' 
     has_executable "ruby"
   end
 end
@@ -61,11 +61,11 @@ package :add_bundler do
   
   # only need to symlink bundler because all other gems should be in Gemfile and can be run using bundle exec (or binstubs)
   runner "gem install bundler --version=1.0.18"
-  runner "ln -s /usr/local/rubies/ruby-1.9.2-p290/lib/ruby/gems/1.9.1/gems/bundler-1.0.18/bin/bundle /usr/local/bin/bundle"
+  runner "ln -s /usr/local/rubies/ruby-1.9.3-p194/lib/ruby/gems/1.9.1/gems/bundler-1.0.18/bin/bundle /usr/local/bin/bundle"
   
   verify do 
     @commands << 'gem list | grep bundler' 
-    has_symlink '/usr/local/bin/bundle', '/usr/local/rubies/ruby-1.9.2-p290/lib/ruby/gems/1.9.1/gems/bundler-1.0.18/bin/bundle'
+    has_symlink '/usr/local/bin/bundle', '/usr/local/rubies/ruby-1.9.3-p194/lib/ruby/gems/1.9.1/gems/bundler-1.0.18/bin/bundle'
   end
 end
 
