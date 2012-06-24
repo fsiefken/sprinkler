@@ -34,13 +34,13 @@ package :postgres_autostart do
   description "PostgreSQL: Autostart on reboot"
   requires :postgres_core
   
-  runner '/usr/sbin/update-rc.d postgresql-8.4 defaults'
+  runner '/usr/sbin/update-rc.d postgresql-9.1 defaults'
 end
 
 %w[start stop restart reload].each do |command|
   package :"postgres_#{command}" do
     requires :postgres_core
 
-    runner "/etc/init.d/postgresql-8.4 #{command}"
+    runner "/etc/init.d/postgresql-9.1 #{command}"
   end
 end
