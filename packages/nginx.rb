@@ -18,7 +18,7 @@ end
 package :nginx_source_core do
   requires :nginx_dependencies
   
-  #source 'http://nginx.org/download/nginx-1.0.5.tar.gz' do
+  #source 'http://nginx.org/download/nginx-1.3.1.tar.gz' do
   #  prefix       '/usr/local/nginx'
   #  without      ['mail_pop3_module', 'mail_imap_module', 'mail_smtp_module']
   #  with         ['http_ssl_module', 'http_stub_status_module', 'http_gzip_static_module']
@@ -26,11 +26,11 @@ package :nginx_source_core do
   #end
   
   runner "mkdir -p /usr/local/nginx && mkdir -p /usr/local/build && mkdir -p /usr/local/sources"
-  runner "wget -cq --directory-prefix='/usr/local/sources' http://nginx.org/download/nginx-1.0.5.tar.gz"
-  runner "cd /usr/local/build && tar xzf /usr/local/sources/nginx-1.0.5.tar.gz"
-  runner "cd /usr/local/build/nginx-1.0.5 && ./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_stub_status_module --with-http_gzip_static_module --without-mail_pop3_module --without-mail_imap_module --without-mail_smtp_module --sbin-path=/usr/local/sbin/nginx"
-  runner "cd /usr/local/build/nginx-1.0.5 && make"
-  runner "cd /usr/local/build/nginx-1.0.5 && make install"
+  runner "wget -cq --directory-prefix='/usr/local/sources' http://nginx.org/download/nginx-1.3.1.tar.gz"
+  runner "cd /usr/local/build && tar xzf /usr/local/sources/nginx-1.3.1.tar.gz"
+  runner "cd /usr/local/build/nginx-1.3.1 && ./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_stub_status_module --with-http_gzip_static_module --without-mail_pop3_module --without-mail_imap_module --without-mail_smtp_module --sbin-path=/usr/local/sbin/nginx"
+  runner "cd /usr/local/build/nginx-1.3.1 && make"
+  runner "cd /usr/local/build/nginx-1.3.1 && make install"
   
   verify do
     has_executable '/usr/local/sbin/nginx'
