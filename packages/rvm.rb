@@ -19,11 +19,11 @@ package :default_rubies do
   requires :ruby_dependencies
   requires :add_bundler
   
-  runner "source /etc/profile && rvm install ruby-1.8.7-p174,ruby-1.9.2-p180"
+  runner "source /etc/profile && rvm install ruby-1.8.7-p174,1.9.3-p194"
   
   verify do
     has_executable "/usr/local/rvm/rubies/ruby-1.8.7-p174/bin/ruby"
-    has_executable "/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby"  
+    has_executable "/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby"  
   end
 end
 
