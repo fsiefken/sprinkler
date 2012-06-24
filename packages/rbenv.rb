@@ -27,7 +27,7 @@ package :symlink_rubies do
   verify do
     @commands << "sudo -u #{DEPLOY_USER} -i /home/#{DEPLOY_USER}/.rbenv/bin/rbenv versions | grep 1.8.7-p352"
     @commands << "sudo -u #{DEPLOY_USER} -i /home/#{DEPLOY_USER}/.rbenv/bin/rbenv versions | grep 1.9.3-p194"
-    has_symlink "/home/#{DEPLOY_USER}/.rbenv/versions/1.9.2-p290", '/opt/ruby-1.9.3-p194' 
+    has_symlink "/home/#{DEPLOY_USER}/.rbenv/versions/1.9.3-p194", '/opt/ruby-1.9.3-p194' 
     has_symlink "/home/#{DEPLOY_USER}/.rbenv/versions/1.8.7-p352", '/opt/ruby-1.8.7-p352' 
   end
 end
