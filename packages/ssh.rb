@@ -54,7 +54,7 @@ end
   end
 end
 
-# package :ssh_custom_port do
-#   replace_text 'Port 22', 'Port 2500', '/etc/ssh/sshd_config', :=> true
-# end
+package :ssh_custom_port do
+   replace_text 'Port 22', 'Port 2600', '/etc/ssh/sshd_config', :=> true
+end
 
